@@ -1,14 +1,16 @@
-from notificaciones.servicios import NotificacionEmail, NotificacionSMS, NotificacionPush
+from .base import Notificacion
+from .servicios import NotificacionEmail, NotificacionSMS, NotificacionPush
 
 class NotificacionFactory:
     @staticmethod
-    def crear_notificacion(tipo: str):
-        tipo = tipo.lower()
-        if tipo == "email":
+    def crear_notificacion(tipo: str) -> Notificacion:
+        tipo_normalizado = tipo.strip().lower()
+
+        if tipo_normalizado == "email":
             return NotificacionEmail()
-        elif tipo == "sms":
+        elif tipo_normalizado == "sms":
             return NotificacionSMS()
-        elif tipo == "push":
+        elif tipo_normalizado == "push":
             return NotificacionPush()
         else:
-            raise ValueError(f"Canal de notificacion desconocido: {tipo}")
+            raise ValueError(f"Tipo de notificacion desconocido: '{tipo}'")
