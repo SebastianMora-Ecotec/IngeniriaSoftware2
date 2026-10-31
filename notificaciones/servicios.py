@@ -12,6 +12,6 @@ class NotificacionPush(Notificacion):
     def enviar(self, mensaje: str, destinatario: str) -> None:
         print(f"[PUSH] Enviando a {destinatario}: '{mensaje}'")
 
-class NotificacionWhatsApp(Notificacion):
+class NotificacionTelegram(Notificacion):
     def enviar(self, mensaje: str, destinatario: str) -> None:
-        print(f"[WHATSAPP] Enviando a {destinatario}: '{mensaje}'")
+        print(f"[TELEGRAM] Enviando a {destinatario}: '{mensaje}'")
